@@ -32,11 +32,11 @@ public class Door : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             playerNear = true;
-            if (haveKey)
+            if (haveKey && !opened)
             {
                 openText.gameObject.SetActive(true);
             }
-            else
+            else if (!haveKey)
             {
                 lockedText.gameObject.SetActive(true);
             }
