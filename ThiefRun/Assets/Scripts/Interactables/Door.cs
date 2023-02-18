@@ -7,14 +7,14 @@ public class Door : MonoBehaviour
 {
 
     private bool haveKey = false;
-    public void PickupKey()
+    virtual public void PickupKey()
     {
         haveKey = true;
     }
 
     private const float openAngle = 150f;
     private bool opened = false;
-    private void Open()
+    protected virtual void Open()
     {
         if (!opened)
         {
