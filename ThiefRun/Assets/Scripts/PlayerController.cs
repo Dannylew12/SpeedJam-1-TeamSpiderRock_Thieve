@@ -51,15 +51,21 @@ public class PlayerController : MonoBehaviour
             {
                 capsuleCollider.height = 1f;
                 Vector3 nPos = camera.transform.position;
-                nPos.y -= 1;
+                nPos.y -= .5f;
                 camera.transform.position = nPos;
+                nPos = transform.position;
+                nPos.y -= 1f;
+                transform.position = nPos;
             }
             if (Input.GetKeyUp(KeyCode.LeftControl))
             {
                 capsuleCollider.height = 2f;
                 Vector3 nPos = camera.transform.position;
-                nPos.y += 1;
+                nPos.y += .5f;
                 camera.transform.position = nPos;
+                nPos = transform.position;
+                nPos.y += 1f;
+                transform.position = nPos;
             }
             if (Input.GetKey(KeyCode.LeftControl))
                 curSpeed = crouchSpeed;
