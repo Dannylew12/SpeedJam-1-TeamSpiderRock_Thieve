@@ -8,40 +8,53 @@ public class EnemyBehavior : MonoBehaviour
 {
 
     public enum STATUS { IDLE, PATROL, CHASE, RETURN, DEFAULT }
-    public STATUS status = STATUS.DEFAULT;
+
+    public STATUS curStatus = STATUS.DEFAULT;
+    private STATUS originalStatus;
     private NavMeshAgent meshAgent;
     private void Start()
     {
         meshAgent = GetComponent<NavMeshAgent>();
+        originalStatus = curStatus;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()
     {
-        if (status == STATUS.IDLE)
+        if (curStatus == STATUS.IDLE)
         {
             IdleBehavior();
             return;
         }
-        if (status == STATUS.PATROL)
+        if (curStatus == STATUS.PATROL)
         {
             PatrolBehavior();
             return;
         }
-        if (status == STATUS.CHASE)
+        if (curStatus == STATUS.CHASE)
         {
             ChaseBehavior();
             return;
         }
-        if (status == STATUS.RETURN)
+        if (curStatus == STATUS.RETURN)
         {
             ReturnBehavior();
             return;
         }
     }
 
+    [SerializeField] private float maxTurnAngle;
+    [SerializeField] private float turnSpeed;
+    private bool clockwise = true;
+    private float curAngle = 0f;
     private void IdleBehavior()
     {
-
+        float sign = clockwise ? 1 : -1;
+        float prevAngle = curAngle;
+        curAngle = Mathf.Clamp(curAngle + Time.deltaTime * turnSpeed * sign, -maxTurnAngle, maxTurnAngle);
+        transform.Rotate(0, curAngle - prevAngle, 0);
+        if (curAngle >= maxTurnAngle || curAngle <= -maxTurnAngle)
+            clockwise = !clockwise;
     }
 
     [SerializeField] private List<Transform> patrolPath;
@@ -54,10 +67,13 @@ public class EnemyBehavior : MonoBehaviour
         }
         meshAgent.SetDestination(patrolPath[pathIdx].position);
     }
-    
+
+    public Transform player;
     private void ChaseBehavior()
     {
-
+        meshAgent.speed = 6;
+        meshAgent.angularSpeed = 180;
+        meshAgent.SetDestination(player.position);
     }
 
     private void ReturnBehavior()
