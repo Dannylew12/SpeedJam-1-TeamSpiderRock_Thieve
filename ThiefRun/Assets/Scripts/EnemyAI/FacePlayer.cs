@@ -6,17 +6,20 @@ public class FacePlayer : MonoBehaviour
 {
 
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
     private EnemyBehavior enemy;
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         enemy = GetComponentInParent<EnemyBehavior>();
     }
 
     private void Update()
     {
         transform.LookAt(enemy.player);
-        SetSprite();
+        //SetSprite();
+        SetAnimator();
     }
 
     [SerializeField] private Sprite[] faceSprites;
@@ -35,4 +38,35 @@ public class FacePlayer : MonoBehaviour
         if (dirRghtVal < -cos45)
             spriteRenderer.sprite = faceSprites[3];
     }
+
+    private EnemyBehavior.STATUS prevStatus;
+    private void SetAnimator()
+    {
+        if (enemy.curStatus == EnemyBehavior.STATUS.IDLE || enemy.curStatus == EnemyBehavior.STATUS.DEFAULT)
+        {
+            float dirForwVal = Vector3.Dot(enemy.transform.forward, (enemy.player.position - enemy.transform.position).normalized);
+            float dirRghtVal = Vector3.Dot(enemy.transform.right, (enemy.player.position - enemy.transform.position).normalized);
+
+            if (dirForwVal > cos45)
+                animator.SetInteger("viewFrom", 0);
+            if (dirForwVal < -cos45)
+                animator.SetInteger("viewFrom", 1);
+            if (dirRghtVal > cos45)
+                animator.SetInteger("viewFrom", 2);
+            if (dirRghtVal < -cos45)
+                animator.SetInteger("viewFrom", 3);
+        }
+        else if (enemy.curStatus == EnemyBehavior.STATUS.CHASE && prevStatus != enemy.curStatus)
+        {
+            animator.SetInteger("viewFrom", -1);
+            animator.SetTrigger("chasing");
+        }
+        else if (enemy.curStatus == EnemyBehavior.STATUS.PATROL && prevStatus != enemy.curStatus)
+        {
+            animator.SetInteger("viewFrom", -1);
+            animator.SetTrigger("walk");
+        }
+        prevStatus = enemy.curStatus;
+    }
+
 }
