@@ -12,6 +12,14 @@ public class SearchRoutine : MonoBehaviour
         searcher = GetComponent<EnemyBehavior>();
         sqrSchRge = searchRange * searchRange;
         cosSchAgl = Mathf.Cos(searchAngle * Mathf.PI / 180f);
+        
+        /// Set cone of vision to correct size
+        Light visionCone = transform.GetChild(1).GetComponent<Light>();
+        if (visionCone != null)
+        {
+            visionCone.range = searchRange;
+            visionCone.spotAngle = searchAngle;
+        }
     }
 
     [SerializeField] private float searchRange;
@@ -41,7 +49,10 @@ public class SearchRoutine : MonoBehaviour
                     }
                 }
                 if (closestTarget == "Player")
+                {
                     searcher.curStatus = EnemyBehavior.STATUS.CHASE;
+                    GameObject.FindGameObjectWithTag("MainTheme").GetComponent<Alarmed>().PlayAlarmed();
+                }
             }
         }
     }
