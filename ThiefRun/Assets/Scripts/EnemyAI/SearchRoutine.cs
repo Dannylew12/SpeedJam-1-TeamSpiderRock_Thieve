@@ -49,7 +49,10 @@ public class SearchRoutine : MonoBehaviour
                     }
                 }
                 if (closestTarget == "Player")
+                {
                     searcher.curStatus = EnemyBehavior.STATUS.CHASE;
+                    GameObject.FindGameObjectWithTag("MainTheme").GetComponent<Alarmed>().PlayAlarmed();
+                }
             }
         }
     }

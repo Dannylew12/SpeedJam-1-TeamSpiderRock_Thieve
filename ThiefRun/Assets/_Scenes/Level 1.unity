@@ -1162,9 +1162,10 @@ GameObject:
   - component: {fileID: 635202060}
   - component: {fileID: 635202059}
   - component: {fileID: 635202058}
+  - component: {fileID: 635202061}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -1248,6 +1249,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635202056}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &635202061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635202056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad0f9298acbe50d4c807b76cbb2a4db1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floor: 0
 --- !u!1 &720906924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,7 +1541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3650705459133135917, guid: 577bf55cc61b193468973e1f89b142eb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.169
+      value: 7.292
       objectReference: {fileID: 0}
     - target: {fileID: 3650705459133135917, guid: 577bf55cc61b193468973e1f89b142eb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1561,6 +1575,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4104634807746207395, guid: 577bf55cc61b193468973e1f89b142eb, type: 3}
+      propertyPath: alarmedTheme
+      value: 
+      objectReference: {fileID: 8300000, guid: 17149332d6820e844bd31e56654b90e6, type: 3}
+    - target: {fileID: 7419248897798087259, guid: 577bf55cc61b193468973e1f89b142eb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419248897798087259, guid: 577bf55cc61b193468973e1f89b142eb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.178
+      objectReference: {fileID: 0}
+    - target: {fileID: 8641129414297986902, guid: 577bf55cc61b193468973e1f89b142eb, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8fa5df8305b904147b346143ebbdaa2c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 577bf55cc61b193468973e1f89b142eb, type: 3}
 --- !u!43 &946412972
@@ -2120,9 +2150,10 @@ GameObject:
   - component: {fileID: 1145902752}
   - component: {fileID: 1145902751}
   - component: {fileID: 1145902750}
+  - component: {fileID: 1145902754}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -2206,6 +2237,19 @@ Transform:
   m_Father: {fileID: 809241452}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1145902754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145902749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad0f9298acbe50d4c807b76cbb2a4db1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floor: 0
 --- !u!1 &1149331600
 GameObject:
   m_ObjectHideFlags: 0
@@ -4034,9 +4078,10 @@ GameObject:
   - component: {fileID: 1836980326}
   - component: {fileID: 1836980325}
   - component: {fileID: 1836980324}
+  - component: {fileID: 1836980328}
   m_Layer: 0
   m_Name: Tile_plane
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -4120,6 +4165,19 @@ Transform:
   m_Father: {fileID: 1654108138}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1836980328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836980323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad0f9298acbe50d4c807b76cbb2a4db1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floor: 1
 --- !u!1 &1863375457
 GameObject:
   m_ObjectHideFlags: 0
