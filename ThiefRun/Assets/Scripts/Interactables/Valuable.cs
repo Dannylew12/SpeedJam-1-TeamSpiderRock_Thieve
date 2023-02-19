@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class Valuable : Collectible
 {
+    [SerializeField] private List<AudioClip> sounds;
+    private AudioSource audioSource;
     private GameManager gameManager;
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
@@ -15,5 +18,6 @@ public class Valuable : Collectible
     protected override void React()
     {
         gameManager.points += points;
+        audioSource.PlayOneShot(sounds[Random.Range(0, sounds.Count)]);
     }
 }

@@ -8,18 +8,26 @@ public class FacePlayer : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     private EnemyBehavior enemy;
+    private Transform player;
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         enemy = GetComponentInParent<EnemyBehavior>();
+
+        if (enemy == null)
+            player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
+    [SerializeField] private bool singleSprite = false;
     private void Update()
     {
-        transform.LookAt(enemy.player);
-        //SetSprite();
-        SetAnimator();
+        if (!singleSprite)
+        {
+            transform.LookAt(enemy.player);
+            SetAnimator();
+        }
+        else transform.LookAt(player);
     }
 
     [SerializeField] private Sprite[] faceSprites;
