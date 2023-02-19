@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5264485026823434270}
   - component: {fileID: 3441717571897546266}
   - component: {fileID: 4231761593391122294}
+  - component: {fileID: 7835075262955344706}
   m_Layer: 0
   m_Name: SpriteRenderer
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 9156860127854853745}
   m_LocalRotation: {x: 0, y: -0.99894834, z: -0, w: -0.045849465}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.64667, y: 2.6466699, z: 2.64667}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2245855177740688777}
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_Size: {x: 0.72, y: 0.72}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &4231761593391122294
@@ -98,10 +99,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faceSprites:
-  - {fileID: 21300000, guid: 1c606994262bd5c4caa623a4b589b1c4, type: 3}
-  - {fileID: 21300000, guid: 352d7c18a0370e14eb384838d2ff5703, type: 3}
-  - {fileID: 21300000, guid: 394b3f3c5585de24d916076ad94a8c7a, type: 3}
-  - {fileID: 21300000, guid: 1cf19f2601072654d8fdeecdde963778, type: 3}
+  - {fileID: 21300000, guid: c85f03e3a4419ce479326f5b35fbf9fc, type: 3}
+  - {fileID: 21300000, guid: 3b26584afc7812649b74b6b721211728, type: 3}
+  - {fileID: 21300000, guid: f39716d7054fee04a8ac2f9f02b9c615, type: 3}
+  - {fileID: 21300000, guid: 4d3fc19ff829126458ee444bca630cf8, type: 3}
+--- !u!95 &7835075262955344706
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9156860127854853745}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 148be78cb8303364286fe127dc5f814e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1001 &1171641598048267554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -156,6 +177,10 @@ PrefabInstance:
     - target: {fileID: 1110243625524555959, guid: d44ce0336fbaa9d48a990020d2386c1a, type: 3}
       propertyPath: m_Name
       value: SpritePostman
+      objectReference: {fileID: 0}
+    - target: {fileID: 1110243625524555959, guid: d44ce0336fbaa9d48a990020d2386c1a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1110243625524555946, guid: d44ce0336fbaa9d48a990020d2386c1a, type: 3}
