@@ -21,7 +21,7 @@ public class SearchRoutine : MonoBehaviour
         /// if we are searching for player
         if (searcher.curStatus != EnemyBehavior.STATUS.CHASE && searcher.curStatus != EnemyBehavior.STATUS.DEFAULT)
         {
-            Vector3 enemyHead = transform.position + new Vector3(0, 1, 0);
+            Vector3 enemyHead = transform.position + new Vector3(0, .5f, 0);
             Vector3 toPlayer = searcher.player.position - enemyHead;
             /// if player is close enough and is in the search angle
             if (toPlayer.sqrMagnitude < sqrSchRge &&
@@ -29,11 +29,19 @@ public class SearchRoutine : MonoBehaviour
             {
                 /// AND there's nothing between the enemy face and middle of player
                 /// then set the behavior to CHASE
-                RaycastHit hit;
-                if (Physics.Raycast(enemyHead, toPlayer, out hit) && hit.collider.tag == "Player")
+                RaycastHit[] hits = Physics.RaycastAll(enemyHead, toPlayer);
+                float minDistance = 1000f;
+                string closestTarget = "";
+                foreach (RaycastHit hit in hits)
                 {
-                    searcher.curStatus = EnemyBehavior.STATUS.CHASE;
+                    if (hit.distance < minDistance)
+                    {
+                        minDistance = hit.distance;
+                        closestTarget = hit.collider.tag;
+                    }
                 }
+                if (closestTarget == "Player")
+                    searcher.curStatus = EnemyBehavior.STATUS.CHASE;
             }
         }
     }
