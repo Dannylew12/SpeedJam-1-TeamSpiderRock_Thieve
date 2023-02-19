@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private CapsuleCollider capsuleCollider;
     private Camera camera;
     public float mouseSensitivity = 1f;
+    private FootSteps footSteps;
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
@@ -19,6 +20,8 @@ public class PlayerController : MonoBehaviour
         /// lock mouse for nice fps view
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        footSteps = transform.GetComponentInChildren<FootSteps>();
     }
 
     [SerializeField] private float walkSpeed;
@@ -44,7 +47,20 @@ public class PlayerController : MonoBehaviour
         {
             float curSpeed = walkSpeed;
             if (Input.GetKey(KeyCode.LeftShift))
+            {
                 curSpeed = runSpeed;
+                if (floor == SurfaceType.FLOORTYPE.STONE)
+                    footSteps.SetAudio(FootSteps.SFXTYPE.SR);
+                else
+                    footSteps.SetAudio(FootSteps.SFXTYPE.WR);
+            }
+            else
+            {
+                if (floor == SurfaceType.FLOORTYPE.STONE)
+                    footSteps.SetAudio(FootSteps.SFXTYPE.SW);
+                else
+                    footSteps.SetAudio(FootSteps.SFXTYPE.WW);
+            }
 
             /// check for crouching state
             if (Input.GetKeyDown(KeyCode.LeftControl))
@@ -76,6 +92,20 @@ public class PlayerController : MonoBehaviour
             strfDir = strfDir > 0 ? 1 : (strfDir < 0 ? -1 : 0);
             Vector3 movementDirection = (forwDir * transform.forward + strfDir * transform.right).normalized;
             rigidBody.velocity = curSpeed * movementDirection;
+
+            if (rigidBody.velocity.sqrMagnitude != 0)
+                footSteps.PlayAudio();
+            else
+                footSteps.StopAudio();
+        }
+    }
+
+    private SurfaceType.FLOORTYPE floor = SurfaceType.FLOORTYPE.DEFAULT;
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "Floor")
+        {
+            floor = collision.collider.GetComponent<SurfaceType>().floor;
         }
     }
 
