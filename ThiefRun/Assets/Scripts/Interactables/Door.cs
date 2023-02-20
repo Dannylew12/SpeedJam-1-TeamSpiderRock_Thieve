@@ -6,10 +6,14 @@ using TMPro;
 public class Door : MonoBehaviour
 {
 
+    [SerializeField] private int keysRequired;
+    private int keyNum = 0;
     private bool haveKey = false;
     virtual public void PickupKey()
     {
-        haveKey = true;
+        ++keyNum;
+        if (keyNum == keysRequired)
+            haveKey = true;
     }
 
     private const float openAngle = 150f;
@@ -69,3 +73,4 @@ public class Door : MonoBehaviour
     }
 
 }
+

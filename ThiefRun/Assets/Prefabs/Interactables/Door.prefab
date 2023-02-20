@@ -352,5 +352,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04f8d0aaf68284c40a1efc9531194d91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keysRequired: 1
   lockedText: {fileID: 0}
   openText: {fileID: 0}
