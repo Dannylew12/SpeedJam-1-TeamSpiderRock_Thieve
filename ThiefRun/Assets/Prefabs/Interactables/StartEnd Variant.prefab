@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9043001691149031571, guid: 3ce5d7c8719ee94478e473dfbce522d4, type: 3}
       propertyPath: m_Name
-      value: StartEnd
+      value: StartEnd Variant
       objectReference: {fileID: 0}
     - target: {fileID: 9043001691149031571, guid: 3ce5d7c8719ee94478e473dfbce522d4, type: 3}
       propertyPath: m_IsActive
@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5606ca77c231072419090b3038674b17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keysRequired: 3
   lockedText: {fileID: 0}
   openText: {fileID: 0}
   winText: {fileID: 0}

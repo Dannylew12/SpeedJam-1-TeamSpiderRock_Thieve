@@ -6,11 +6,12 @@ using TMPro;
 public class Key : Collectible
 {
     [SerializeField] private TMP_Text text;
-    [SerializeField] private Door door;
+    [SerializeField] private List <Door> doors;
     protected override void React()
     {
         if (text != null)
             text.gameObject.SetActive(true);
-        door.PickupKey();
+		foreach (Door door in doors)
+		door.PickupKey();
     }
 }

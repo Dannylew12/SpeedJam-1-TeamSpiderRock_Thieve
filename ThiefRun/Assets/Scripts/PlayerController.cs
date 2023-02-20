@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -109,4 +110,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.tag == "Floor")
+        {
+            floor = collision.collider.GetComponent<SurfaceType>().floor;
+            if (floor == SurfaceType.FLOORTYPE.WOOD)
+                floor = SurfaceType.FLOORTYPE.STONE;
+            else if (floor == SurfaceType.FLOORTYPE.STONE)
+                floor = SurfaceType.FLOORTYPE.WOOD;
+        }
+    }
+	[SerializeField] private TMP_Text loseText;
+    public void Lose()
+    {
+        /// PAUSE THE GAME
+        Time.timeScale = 0f;
+        loseText.gameObject.SetActive(true);
+    }
 }
+

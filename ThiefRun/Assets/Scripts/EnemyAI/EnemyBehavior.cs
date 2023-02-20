@@ -81,5 +81,11 @@ public class EnemyBehavior : MonoBehaviour
 
     }
 
-
+	private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            other.GetComponent<PlayerController>().Lose();
+        }
+    }
 }
